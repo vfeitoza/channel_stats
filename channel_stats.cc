@@ -152,7 +152,7 @@ get_query_param(const char *query, const char *param,
 {
   char *pos = 0;
 
-  pos = strstr(query, param); // try to find in querystring of url
+  pos = const_cast<char *>(strstr(query, param)); // try to find in querystring of url
   if (pos != query) {
     // if param is not prefix of querystring
     while (pos && *(pos - 1) != '&') { // param must be after '&'
@@ -193,7 +193,7 @@ has_query_param(const char *query, const char *param, int has_no_value)
 {
   char *pos = 0;
 
-  pos = strstr(query, param); // try to find in querystring of url
+  pos = const_cast<char *>(strstr(query, param)); // try to find in querystring of url
   if (pos != query) {
     // if param is not prefix of querystring
     while (pos && *(pos - 1) != '&') { // param must be after '&'
